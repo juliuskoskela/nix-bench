@@ -34,5 +34,5 @@ nix develop
 Then, you can run the `foo` benchmark suite:
 
 ```
-foo
+foo-suite
 ```

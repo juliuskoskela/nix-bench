@@ -16,7 +16,7 @@
 
   mkJob = {
     name,
-    test,
+    bench,
     logger,
     args ? {},
   }: let
@@ -24,8 +24,10 @@
     argsString = lib.strings.concatStringsSep "\n" (map (arg: "export ${arg.name}=\"${toString arg.value}\"") argsList);
   in
     writeShellScriptBin name ''
+      export BENCH_NAME=${bench.name}
+      export JOB_NAME=${name}
       ${argsString}
-      ${test.bin} | ${logger}
+      ${bench.bin} | ${logger}
     '';
 
   mkSuite = {
