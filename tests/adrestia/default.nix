@@ -12,7 +12,7 @@
     parse = "tee";
   };
 
-   logger = "tee";
+  logger = "tee";
 
   job1 = mkJob {
     inherit bench logger;

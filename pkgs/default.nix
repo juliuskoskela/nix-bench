@@ -1,3 +1,4 @@
-{pkgs, ...}: with pkgs; {
-  adrestia = callPackage ./adrestia.nix { };
+{pkgs, ...}:
+with pkgs; {
+  adrestia = callPackage ./adrestia.nix {};
 }

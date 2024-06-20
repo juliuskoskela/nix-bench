@@ -1,5 +1,9 @@
-{ lib, stdenv, fetchFromGitHub, clang}:
-
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  clang,
+}:
 stdenv.mkDerivation {
   pname = "adrestia";
   version = "git";
@@ -11,7 +15,7 @@ stdenv.mkDerivation {
     sha256 = "sha256-8N3wCuW0JuV1ZfldqfSkTWhqWS330Pf7Zq50WoVYfmU=";
   };
 
-  buildInputs = [ clang ];
+  buildInputs = [clang];
 
   buildPhase = ''
     export CC=clang
@@ -27,7 +31,7 @@ stdenv.mkDerivation {
   meta = {
     description = "A benchmark to test scheduler load balancer.";
     # license = lib.licenses.gpl2; # Assuming GPL-2.0 based on 'GPL'
-    platforms = [ "i686-linux" "x86_64-linux" "aarch64-linux" ];
+    platforms = ["i686-linux" "x86_64-linux" "aarch64-linux"];
     # maintainers = with lib.maintainers; [  ];
   };
 }

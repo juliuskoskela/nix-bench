@@ -18,7 +18,10 @@
         pkgs = import nixpkgs {inherit system;};
         lib = pkgs.callPackage ./lib {};
         benchPkgs = pkgs.callPackage ./pkgs {};
-        tests = pkgs.callPackage ./tests {inherit benchPkgs; inherit (lib) mkBench mkJob mkSuite;};
+        tests = pkgs.callPackage ./tests {
+          inherit benchPkgs;
+          inherit (lib) mkBench mkJob mkSuite;
+        };
       in {
         packages = {
           inherit (tests) foo adrestia;
