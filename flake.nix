@@ -19,9 +19,9 @@
         lib = pkgs.callPackage ./lib {};
         tests = pkgs.callPackage ./tests {inherit (lib) mkBench mkJob mkSuite;};
       in {
-        packages.tests.foo = tests.foo;
+        packages.foo = tests.foo;
         formatter = pkgs.alejandra;
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           buildInputs = [
             tests.foo
           ];

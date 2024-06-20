@@ -22,7 +22,7 @@
 To run a specific benchmark suite:
 
 ```
-nix run .#tests.foo
+nix run .#foo
 ```
 
 To enter a development shell with the benchmarks available:

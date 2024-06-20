@@ -20,11 +20,15 @@
   # Create a benchmark using mkBench
   bench = mkBench {
     name = "foo-bench";
-    run = "${benchPkg}/bin/foo-pkg"; # Command to run the benchmark binary
-    parse = builtins.readFile ./parse.sh; # Script to parse the test output
+    # Command to run the benchmark binary
+    run = "${benchPkg}/bin/foo-pkg";
+    # Script to parse the test output
+    parse = builtins.readFile ./parse.sh; 
   };
 
-  # Create a logging command which receives the parsed output via stdin
+  # Create a logging command which receives the parsed output via stdin. In
+  # this case, we use the 'tee' command to log the output directly to the
+  # console, but we could also log it to a file or a database.
   logger = "tee";
 
   # Create a job using mkJob
