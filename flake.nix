@@ -17,13 +17,17 @@
       system: let
         pkgs = import nixpkgs {inherit system;};
         lib = pkgs.callPackage ./lib {};
-        tests = pkgs.callPackage ./tests {inherit (lib) mkBench mkJob mkSuite;};
+        benchPkgs = pkgs.callPackage ./pkgs {};
+        tests = pkgs.callPackage ./tests {inherit benchPkgs; inherit (lib) mkBench mkJob mkSuite;};
       in {
-        packages.foo = tests.foo;
+        packages = {
+          inherit (tests) foo adrestia;
+        };
         formatter = pkgs.alejandra;
         devShells.default = pkgs.mkShell {
           buildInputs = [
             tests.foo
+            tests.adrestia
           ];
         };
       }
