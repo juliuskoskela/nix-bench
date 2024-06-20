@@ -23,7 +23,7 @@
     # Command to run the benchmark binary
     run = "${benchPkg}/bin/foo-pkg";
     # Script to parse the test output
-    parse = builtins.readFile ./parse.sh; 
+    parse = builtins.readFile ./parse.sh;
   };
 
   # Create a logging command which receives the parsed output via stdin. In
