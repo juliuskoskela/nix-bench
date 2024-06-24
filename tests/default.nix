@@ -1,10 +1,13 @@
 {
   pkgs,
+  benchPkgs,
   mkBench,
   mkJob,
   mkSuite,
-}: let
+}: {
   foo = pkgs.callPackage ./foo {inherit mkBench mkJob mkSuite;};
-in {
-  inherit foo;
+  adrestia = pkgs.callPackage ./adrestia {
+    inherit (benchPkgs) adrestia;
+    inherit mkBench mkJob mkSuite;
+  };
 }
